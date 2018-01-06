@@ -24,6 +24,10 @@ $config = [
       'identityClass'   => 'app\models\User',
       'enableAutoLogin' => TRUE,
     ],
+    'authManager'  => [
+      'class' => 'yii\rbac\DbManager',
+      'cache' => 'cache',
+    ],
     'errorHandler' => [
       'errorAction' => 'site/error',
     ],

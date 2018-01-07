@@ -7,7 +7,9 @@
 
 namespace app\commands;
 
+use app\models\User;
 use yii\console\Controller;
+use yii\helpers\Console;
 
 /**
  * This command echoes the first argument that you have entered.
@@ -23,8 +25,14 @@ class HelloController extends Controller
      * This command echoes what you have entered as the message.
      * @param string $message the message to be echoed.
      */
-    public function actionIndex($message = 'hello world')
+    public function actionAdmin()
     {
-        echo $message . "\n";
+      $user = new User();
+      $user->email = 'admin@admin.com';
+      $user->setPassword('Admin123@');
+      $user->generateAuthKey();
+      $user->save();
+
+      Console::stdout('Create user Admin successfully');
     }
 }
